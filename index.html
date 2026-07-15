@@ -3,96 +3,146 @@
   鉄構部アプリ_ランチャー
   更新履歴:
   V1.01 (2026/07/15) 初回作成：カード一覧・検索・QR表示
+  V1.02 (2026/07/15) UIを未来的デザイン（ダークテック／HUD風）に刷新
 -->
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄構部アプリ_ランチャー v1.01</title>
+<title>鉄構部アプリ_ランチャー v1.02</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#F5F7F9;
-    --card-bg:#FFFFFF;
-    --text:#333B42;
-    --sub:#6B7580;
-    --accent:#2C5F8A;
-    --accent-light:#E7F0F7;
-    --border:#E1E6EA;
-    --tag-bg:#EEF3F7;
-    --tag-text:#3A5A76;
+    --bg:#0A0E14;
+    --bg-grid:#111826;
+    --panel:#111826;
+    --panel-border:#233042;
+    --text:#DCE6F0;
+    --sub:#7C8CA0;
+    --accent:#00D9FF;
+    --accent-dim:#0A5A6B;
+    --spark:#FF6A3D;
+    --tag-bg:#152233;
+    --tag-text:#5CD9F0;
   }
   *{box-sizing:border-box;}
   body{
     margin:0;
-    font-family:"Yu Gothic","Hiragino Sans",sans-serif;
-    background:var(--bg);
+    min-height:100vh;
+    font-family:"Noto Sans JP",sans-serif;
+    background-color:var(--bg);
+    background-image:
+      linear-gradient(rgba(0,217,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,217,255,0.05) 1px, transparent 1px);
+    background-size:36px 36px;
     color:var(--text);
   }
+  .fx{
+    font-family:"Rajdhani",sans-serif;
+    letter-spacing:0.03em;
+  }
   header{
-    padding:20px 24px 12px;
+    padding:28px 28px 16px;
+    border-bottom:1px solid var(--panel-border);
+    background:linear-gradient(180deg, rgba(0,217,255,0.04), transparent);
   }
   .title-row{
     display:flex;
     align-items:baseline;
-    gap:10px;
+    gap:12px;
     flex-wrap:wrap;
   }
   h1{
-    font-size:22px;
+    font-family:"Rajdhani",sans-serif;
+    font-weight:700;
+    font-size:26px;
     margin:0;
+    letter-spacing:0.04em;
+    color:#fff;
+    text-shadow:0 0 14px rgba(0,217,255,0.35);
   }
   .version{
-    font-size:12px;
-    color:var(--sub);
+    font-family:"Rajdhani",sans-serif;
+    font-size:13px;
+    color:var(--accent);
+    border:1px solid var(--accent-dim);
+    padding:2px 8px;
+    border-radius:4px;
+    background:rgba(0,217,255,0.06);
   }
   #searchBox{
-    margin-top:14px;
+    margin-top:18px;
     width:100%;
     max-width:480px;
-    padding:10px 14px;
-    font-size:15px;
-    border:1px solid var(--border);
-    border-radius:8px;
-    background:#fff;
+    padding:11px 16px;
+    font-size:14.5px;
+    font-family:"Noto Sans JP",sans-serif;
+    border:1px solid var(--panel-border);
+    border-radius:6px;
+    background:#0D131C;
     color:var(--text);
   }
+  #searchBox::placeholder{color:var(--sub);}
   #searchBox:focus{
-    outline:2px solid var(--accent);
-    outline-offset:1px;
+    outline:none;
+    border-color:var(--accent);
+    box-shadow:0 0 0 3px rgba(0,217,255,0.12);
   }
   main{
-    padding:8px 24px 40px;
+    padding:24px 28px 50px;
   }
   #cardGrid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-    gap:18px;
+    grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+    gap:20px;
   }
   .card{
-    background:var(--card-bg);
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:18px;
+    position:relative;
+    background:var(--panel);
+    border:1px solid var(--panel-border);
+    border-radius:10px;
+    padding:20px;
     cursor:pointer;
-    transition:box-shadow .15s ease, transform .15s ease;
+    transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease;
     display:flex;
     flex-direction:column;
-    gap:10px;
+    gap:11px;
+    overflow:hidden;
   }
+  /* HUD風コーナーマーカー */
+  .card::before, .card::after{
+    content:'';
+    position:absolute;
+    width:14px;
+    height:14px;
+    border:2px solid var(--accent);
+    opacity:0;
+    transition:opacity .18s ease;
+  }
+  .card::before{ top:6px; left:6px; border-right:none; border-bottom:none; }
+  .card::after{ bottom:6px; right:6px; border-left:none; border-top:none; }
   .card:hover{
-    box-shadow:0 4px 14px rgba(0,0,0,0.08);
+    border-color:var(--accent-dim);
+    box-shadow:0 0 24px rgba(0,217,255,0.15);
     transform:translateY(-2px);
   }
+  .card:hover::before, .card:hover::after{ opacity:1; }
+
   .card-name{
-    font-size:17px;
-    font-weight:700;
+    font-family:"Rajdhani",sans-serif;
+    font-weight:600;
+    font-size:18px;
     margin:0;
+    color:#fff;
+    letter-spacing:0.02em;
   }
   .card-desc{
-    font-size:13.5px;
+    font-size:13px;
     color:var(--sub);
     margin:0;
-    line-height:1.5;
+    line-height:1.55;
   }
   .tag-row{
     display:flex;
@@ -102,36 +152,46 @@
   .tag{
     background:var(--tag-bg);
     color:var(--tag-text);
-    font-size:11.5px;
-    padding:3px 9px;
-    border-radius:999px;
+    font-size:11px;
+    font-family:"Rajdhani",sans-serif;
+    letter-spacing:0.03em;
+    padding:3px 10px;
+    border-radius:3px;
+    border:1px solid rgba(92,217,240,0.2);
   }
   .card-footer{
     display:flex;
     justify-content:space-between;
     align-items:center;
     margin-top:auto;
-    padding-top:6px;
+    padding-top:8px;
+    border-top:1px solid var(--panel-border);
   }
   .updated{
-    font-size:11.5px;
+    font-size:11px;
+    font-family:"Rajdhani",sans-serif;
     color:var(--sub);
+    letter-spacing:0.02em;
   }
   .qr-btn{
-    border:1px solid var(--border);
-    background:#fff;
+    border:1px solid var(--accent-dim);
+    background:transparent;
     color:var(--accent);
-    font-size:12px;
-    padding:5px 10px;
-    border-radius:6px;
+    font-family:"Rajdhani",sans-serif;
+    font-size:11.5px;
+    letter-spacing:0.05em;
+    padding:5px 12px;
+    border-radius:4px;
     cursor:pointer;
+    transition:background .15s ease, color .15s ease;
   }
   .qr-btn:hover{
-    background:var(--accent-light);
+    background:var(--accent);
+    color:#04141a;
   }
   #emptyMsg{
     color:var(--sub);
-    padding:30px 0;
+    padding:40px 0;
     text-align:center;
     display:none;
   }
@@ -139,39 +199,51 @@
   .modal-overlay{
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,0.45);
+    background:rgba(4,8,14,0.75);
     display:none;
     align-items:center;
     justify-content:center;
     z-index:100;
   }
-  .modal-overlay.show{
-    display:flex;
-  }
+  .modal-overlay.show{ display:flex; }
   .modal-box{
-    background:#fff;
-    border-radius:14px;
-    padding:24px;
+    background:var(--panel);
+    border:1px solid var(--accent-dim);
+    box-shadow:0 0 40px rgba(0,217,255,0.2);
+    border-radius:12px;
+    padding:26px;
     text-align:center;
     max-width:90vw;
   }
   .modal-box h3{
-    margin:0 0 14px;
-    font-size:15px;
+    margin:0 0 16px;
+    font-family:"Rajdhani",sans-serif;
+    font-size:16px;
+    color:#fff;
+    letter-spacing:0.03em;
   }
   #qrCanvasWrap{
     display:flex;
     justify-content:center;
+    background:#fff;
+    padding:12px;
+    border-radius:6px;
   }
   .modal-close{
-    margin-top:16px;
-    padding:8px 20px;
-    border:none;
-    background:var(--accent);
-    color:#fff;
-    border-radius:8px;
+    margin-top:18px;
+    padding:8px 24px;
+    border:1px solid var(--accent-dim);
+    background:transparent;
+    color:var(--accent);
+    border-radius:6px;
     cursor:pointer;
+    font-family:"Rajdhani",sans-serif;
+    letter-spacing:0.04em;
     font-size:13px;
+  }
+  .modal-close:hover{
+    background:var(--accent);
+    color:#04141a;
   }
 </style>
 </head>
@@ -180,7 +252,7 @@
 <header>
   <div class="title-row">
     <h1>鉄構部アプリ_ランチャー</h1>
-    <span class="version">v1.01</span>
+    <span class="version fx">v1.02</span>
   </div>
   <input type="text" id="searchBox" placeholder="アプリ名・説明・タグで検索">
 </header>
@@ -213,7 +285,7 @@ async function loadApps(){
     renderCards(allApps);
   }catch(e){
     document.getElementById('cardGrid').innerHTML =
-      '<p style="color:#c0392b;">apps.jsonの読み込みに失敗しました</p>';
+      '<p style="color:#FF6A3D;">apps.jsonの読み込みに失敗しました</p>';
   }
 }
 
