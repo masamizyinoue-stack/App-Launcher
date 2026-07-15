@@ -1,6 +1,18 @@
 {
   "apps": [
     {
+      "id": "id-1784102298805",
+      "name": "DXF_Viewer",
+      "description": "DXFを読み込んで、計測や書き込みが可能です。",
+      "tags": [
+        "iPad専用",
+        "DXF"
+      ],
+      "url": "https://cad-view.vercel.app/",
+      "order": 1,
+      "updated": "2026/07/15"
+    },
+    {
       "id": "id-1784101366061",
       "name": "PDF比較ツール",
       "description": "新旧のPDFを【2画面比較】又は【重ね合わせ比較】出来ます。",
@@ -10,6 +22,18 @@
       ],
       "url": "https://pdf-6eo9.vercel.app/",
       "order": 1,
+      "updated": "2026/07/15"
+    },
+    {
+      "id": "id-1784102393721",
+      "name": "M_Viewer",
+      "description": "PDFを開いてサブ窓や計算機が使えます。",
+      "tags": [
+        "iPad専用",
+        "PDF"
+      ],
+      "url": "https://m-viewer.vercel.app/",
+      "order": 2,
       "updated": "2026/07/15"
     }
   ]
