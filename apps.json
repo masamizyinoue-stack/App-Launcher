@@ -1,11 +1,14 @@
 {
   "apps": [
     {
-      "id": "sample-001",
-      "name": "サンプルアプリ",
-      "description": "ここに説明文が入ります",
-      "tags": ["サンプル", "テスト"],
-      "url": "https://example.com",
+      "id": "id-1784101366061",
+      "name": "PDF比較ツール",
+      "description": "新旧のPDFを【2画面比較】又は【重ね合わせ比較】出来ます。",
+      "tags": [
+        "PC",
+        "PDF"
+      ],
+      "url": "https://pdf-6eo9.vercel.app/",
       "order": 1,
       "updated": "2026/07/15"
     }
