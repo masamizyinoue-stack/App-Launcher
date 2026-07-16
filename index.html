@@ -5,12 +5,13 @@
   V1.01 (2026/07/15) 初回作成：カード一覧・検索・QR表示
   V1.02 (2026/07/15) UIを未来的デザイン（ダークテック／HUD風）に刷新
   V1.03 (2026/07/15) QRボタン名称変更／タグフィルタ追加／タグ表示高さ統一／カード枠強調
+  V1.04 (2026/07/15) タグフィルタに「全て」ボタンを追加
 -->
 <html lang="ja">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>鉄構部アプリ_ランチャー v1.03</title>
+<title>鉄構部アプリ_ランチャー v1.04</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
@@ -281,7 +282,7 @@
 <header>
   <div class="title-row">
     <h1>鉄構部アプリ_ランチャー</h1>
-    <span class="version fx">v1.03</span>
+    <span class="version fx">v1.04</span>
   </div>
   <input type="text" id="searchBox" placeholder="アプリ名・説明・タグで検索">
   <div id="tagFilterRow"></div>
@@ -330,6 +331,17 @@ function renderTagFilter(apps){
   apps.forEach(app=>(app.tags||[]).forEach(t=>tagSet.add(t)));
 
   row.innerHTML = '';
+
+  const allBtn = document.createElement('button');
+  allBtn.className = 'tag-filter-btn' + (selectedTag === null ? ' active' : '');
+  allBtn.textContent = '全て';
+  allBtn.addEventListener('click', ()=>{
+    selectedTag = null;
+    renderTagFilter(allApps);
+    applyFilters();
+  });
+  row.appendChild(allBtn);
+
   [...tagSet].forEach(tag=>{
     const btn = document.createElement('button');
     btn.className = 'tag-filter-btn' + (tag === selectedTag ? ' active' : '');
