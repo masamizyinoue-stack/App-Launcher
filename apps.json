@@ -13,18 +13,6 @@
       "updated": "2026/07/15"
     },
     {
-      "id": "id-1784101366061",
-      "name": "PDF比較ツール",
-      "description": "新旧のPDFを【2画面比較】又は【重ね合わせ比較】出来ます。",
-      "tags": [
-        "PC",
-        "PDF"
-      ],
-      "url": "https://pdf-6eo9.vercel.app/",
-      "order": 1,
-      "updated": "2026/07/15"
-    },
-    {
       "id": "id-1784102393721",
       "name": "M_Viewer",
       "description": "PDFを開いてサブ窓や計算機が使えます。",
@@ -33,8 +21,42 @@
         "PDF"
       ],
       "url": "https://m-viewer.vercel.app/",
+      "order": 1,
+      "updated": "2026/07/15"
+    },
+    {
+      "id": "id-1784101366061",
+      "name": "PDF比較ツール",
+      "description": "新旧のPDFを【2画面比較】又は【重ね合わせ比較】出来ます。",
+      "tags": [
+        "PC",
+        "PDF"
+      ],
+      "url": "https://pdf-6eo9.vercel.app/",
       "order": 2,
       "updated": "2026/07/15"
+    },
+    {
+      "id": "id-1784164596365",
+      "name": "コピペツール",
+      "description": "PCでのコピペ支援アプリです。",
+      "tags": [
+        "PC"
+      ],
+      "url": "https://copy-tool-six.vercel.app/",
+      "order": 4,
+      "updated": "2026/07/16"
+    },
+    {
+      "id": "id-1784164709697",
+      "name": "第一孔確認ツール",
+      "description": "単品詳細図のセクション第一孔位置の確認用です。",
+      "tags": [
+        "PC"
+      ],
+      "url": "https://firsthool.vercel.app/",
+      "order": 5,
+      "updated": "2026/07/16"
     }
   ]
 }
