@@ -2,7 +2,7 @@
   "apps": [
     {
       "id": "id-1784102298805",
-      "name": "DXF_Viewer",
+      "name": "DXFビューワー",
       "description": "DXFを読み込んで、計測や書き込みが可能です。",
       "tags": [
         "iPad専用",
@@ -10,11 +10,11 @@
       ],
       "url": "https://cad-view.vercel.app/",
       "order": 1,
-      "updated": "2026/07/15"
+      "updated": "2026/07/17"
     },
     {
       "id": "id-1784102393721",
-      "name": "M_Viewer",
+      "name": "PDFビューワー",
       "description": "PDFを開いてサブ窓や計算機が使えます。",
       "tags": [
         "iPad専用",
@@ -22,7 +22,7 @@
       ],
       "url": "https://m-viewer.vercel.app/",
       "order": 1,
-      "updated": "2026/07/15"
+      "updated": "2026/07/17"
     },
     {
       "id": "id-1784101366061",
