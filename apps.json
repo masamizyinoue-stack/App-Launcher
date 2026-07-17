@@ -3,26 +3,28 @@
     {
       "id": "id-1784102298805",
       "name": "DXFビューワー",
-      "description": "DXFを読み込んで、計測や書き込みが可能です。",
+      "description": "【iPad専用】DXFを読み込んで、計測や書き込みが可能です。",
       "tags": [
         "iPad専用",
         "DXF"
       ],
       "url": "https://cad-view.vercel.app/",
       "order": 1,
-      "updated": "2026/07/17"
+      "updated": "2026/07/17",
+      "note": "保存が安定してないかも"
     },
     {
       "id": "id-1784102393721",
       "name": "PDFビューワー",
-      "description": "PDFを開いてサブ窓や計算機が使えます。",
+      "description": "【iPad専用】PDFを開いてサブ窓や計算機が使えます。",
       "tags": [
         "iPad専用",
         "PDF"
       ],
       "url": "https://m-viewer.vercel.app/",
       "order": 1,
-      "updated": "2026/07/17"
+      "updated": "2026/07/17",
+      "note": ""
     },
     {
       "id": "id-1784101366061",
