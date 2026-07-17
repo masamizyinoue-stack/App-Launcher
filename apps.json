@@ -57,6 +57,15 @@
       "url": "https://firsthool.vercel.app/",
       "order": 5,
       "updated": "2026/07/16"
+    },
+    {
+      "id": "id-1784251138793",
+      "name": "鳥取 アプリランチャー",
+      "description": "鳥取で作成のアプリランチャーにとびます。",
+      "tags": [],
+      "url": "https://script.google.com/macros/s/AKfycbyxMghWMRPE7ZSSV0-1RHn9YuzodsjvBFIRDTlYMPvkO3Li6ejDGUE9IXDi5uqJFAdOkA/exec",
+      "order": 6,
+      "updated": "2026/07/17"
     }
   ]
 }
